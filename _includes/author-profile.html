@@ -6,12 +6,14 @@
 
 <div itemscope itemtype="http://schema.org/Person">
 
-  <div class="author__avatar">
+  <div class="author__avatar avatar-toggle" onclick="toggleAvatar()">
     {% if author.avatar contains "://" %}
-    	<img src="{{ author.avatar }}" alt="{{ author.name }}"  fetchpriority="high" />
+      <img id="avatar-real" src="{{ author.avatar }}" alt="{{ author.name }}" class="avatar-img show" fetchpriority="high" />
     {% else %}
-    	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}"  fetchpriority="high" />
+      <img id="avatar-real" src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" alt="{{ author.name }}" class="avatar-img show" fetchpriority="high" />
     {% endif %}
+
+    <img id="avatar-virtual" src="{{ '/images/my_avatar.png' | relative_url }}" alt="Virtual Avatar" class="avatar-img" />
   </div>
 
   <div class="author__content">

@@ -1,0 +1,28 @@
+- title: "MASt3R-SLAM: Real-Time Dense SLAM with 3D Reconstruction Priors"
+  authors: "*Riku Murai*, **Eric Dexheimer**, Andrew J. Davison"
+  venue: "CVPR, 2025"
+  note: "Highlight & Best Demo Honorable Mention"
+  image: images/test.gif
+  links:
+    - name: "project page"
+      url: https://example.com/project1
+    - name: "arxiv"
+      url: https://arxiv.org/abs/0000.0000
+    - name: "code"
+      url: https://github.com/yourname/mastr3r-slam
+    - name: "video"
+      url: https://youtube.com/yourvideo
+- title: "MASt3R-SLAM: Real-Time Dense SLAM with 3D Reconstruction Priors"
+  authors: "*Riku Murai*, **Eric Dexheimer**, Andrew J. Davison"
+  venue: "CVPR, 2025"
+  note: "Highlight & Best Demo Honorable Mention"
+  image: images/test.gif
+  links:
+    - name: "project page"
+      url: https://example.com/project1
+    - name: "arxiv"
+      url: https://arxiv.org/abs/0000.0000
+    - name: "code"
+      url: https://github.com/yourname/mastr3r-slam
+    - name: "video"
+      url: https://youtube.com/yourvideo

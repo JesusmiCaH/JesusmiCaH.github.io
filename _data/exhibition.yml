@@ -1,0 +1,15 @@
+- title: "Computer Vision"
+  description: "Exploring the intersection of computer vision and machine learning, focusing on image processing and analysis"
+  image: "images/computer-vision.png"
+
+- title: "3D Reconstruction"
+  description: "Reconstructing 3D models from images and videos, using Gaussian Splatting or Point Clouds"
+  image: "images/3D-reconstruction.png"
+
+- title: "SLAM"
+  description: "Simultaneous Localization and Mapping, integrating computer vision with robotics for real-time navigation"
+  image: "images/SLAM.png"
+
+- title: "Diffusion Models"
+  description: "Leveraging diffusion models for generative tasks in computer vision, including image synthesis and enhancement"
+  image: "images/diffusion-models.png"

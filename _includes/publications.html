@@ -1,0 +1,38 @@
+<hr />
+
+<div class="publications">
+  {% assign pubs = site.data.publications %}
+  {% for pub in pubs %}
+    <div style="margin-bottom: 10px; padding: 2px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #fafafa;">
+      <table>
+        <tr>
+          {% if pub.image %}
+          <td style="width: 150px; vertical-align: top;">
+            <img src="{{ pub.image | relative_url }}" style="max-width: 160px;"/>
+          </td>
+          {% endif %}
+          <td style="padding-left: 25px;">
+            <p style="margin: 0;">
+              <strong><a href="{{ pub.links[0].url }}" style="color: #0046d5; font-size: 1.2em;">{{ pub.title }}</a></strong>
+            </p>
+            <p style="margin: 0">{{ pub.authors | markdownify }}</p>
+            <p style="margin: 0"><em>{{ pub.venue }}</em>
+              {% if pub.note %}
+                <span style="color: red;">({{ pub.note }})</span>
+              {% endif %}
+            </p>
+            {% if pub.links %}
+              <p style="margin: 0; font-size: 1.05em;">
+                {% for link in pub.links %}
+                  <a href="{{ link.url }}" target="_blank" style="font-weight: 500;">{{ link.name }}</a>{% if forloop.last == false %} / {% endif %}
+                {% endfor %}
+              </p>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+    </div>
+  {% endfor %}
+</div>
+
+<hr />

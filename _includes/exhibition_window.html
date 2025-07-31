@@ -1,0 +1,15 @@
+<hr />
+<div class="exhibition-window">
+  {% for interest in site.data.exhibition %}
+    <div class="card">
+      <div class="image">
+        <img src="{{ interest.image | relative_url }}">
+      </div>
+      <div class="text">
+        <p>{{ interest.title }}</p>
+        <p>{{ interest.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<hr />

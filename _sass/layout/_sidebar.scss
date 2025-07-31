@@ -104,6 +104,35 @@
   }
 }
 
+.avatar-toggle {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  margin-bottom: 10px;
+
+  .avatar-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 175px;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    @include breakpoint($large) {
+      padding: 5px;
+      border: 1px solid var(--global-border-color);
+    }
+  }
+
+  .avatar-img.show {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
 .author__content {
   display: table-cell;
   vertical-align: top;
