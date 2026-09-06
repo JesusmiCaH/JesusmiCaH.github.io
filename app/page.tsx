@@ -3,18 +3,12 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 
-type Direction = 'fieldbook' | 'magazine';
 type PortraitId = 'brighton' | 'panama' | 'portrait03';
 
-const directions: Array<{ id: Direction; number: string; name: string; note: string }> = [
-  { id: 'fieldbook', number: '01', name: 'Fieldbook', note: '温暖 / 手记' },
-  { id: 'magazine', number: '02', name: 'Urban Signal', note: '都市 / 拼贴' },
-];
-
-const portraits: Record<PortraitId, { src: string; alt: string; label: string; code: string; fieldbookPosition: string; urbanPosition: string }> = {
-  brighton: { src: '/images/portraits/tommy-in-brighton.jpg', alt: 'Chenghao Tommy Jiang in Brighton', label: 'Brighton, UK', code: 'BRIGHTON_UK', fieldbookPosition: '50% 38%', urbanPosition: '50% 38%' },
-  panama: { src: '/images/portraits/tommy-in-panama.jpg', alt: 'Chenghao Tommy Jiang in Panama', label: 'Panama', code: 'PANAMA', fieldbookPosition: '50% 38%', urbanPosition: '50% 38%' },
-  portrait03: { src: '/images/portraits/tommy-in-madison.jpg', alt: 'Chenghao Tommy Jiang portrait', label: 'Madison, WI', code: 'MADISON_WI', fieldbookPosition: '50% 50%', urbanPosition: '50% 50%' },
+const portraits: Record<PortraitId, { src: string; alt: string; label: string; fieldbookPosition: string }> = {
+  brighton: { src: '/images/portraits/tommy-in-brighton.jpg', alt: 'Chenghao Tommy Jiang in Brighton', label: 'Brighton, UK', fieldbookPosition: '50% 38%' },
+  panama: { src: '/images/portraits/tommy-in-panama.jpg', alt: 'Chenghao Tommy Jiang in Panama', label: 'Panama', fieldbookPosition: '50% 38%' },
+  portrait03: { src: '/images/portraits/tommy-in-madison.jpg', alt: 'Chenghao Tommy Jiang portrait', label: 'Madison, WI', fieldbookPosition: '50% 50%' },
 };
 
 const portraitOrder: PortraitId[] = ['brighton', 'panama', 'portrait03'];
@@ -122,10 +116,10 @@ const ukPhotos = [
 ];
 
 const photoStories = [
-  { id: 'manchester', eyebrow: 'UK / 2023', title: 'Life in Manchester', summary: 'Grey skies, long walks, robotics, football, and the first feeling that the world could become much larger.', color: 'violet', photos: ukPhotos },
-  { id: 'madison', eyebrow: 'WISCONSIN / FRIENDS', title: 'Life in Madison', summary: 'Research happened in the lab. The rest of the education happened around dinner tables, road trips, and conversations after class.', color: 'red', photos: [lifePhotos[0], lifePhotos[4], lifePhotos[5]] },
-  { id: 'travelling', eyebrow: 'AWAY / IN BETWEEN', title: 'Travelling', summary: 'New places interrupt routine. They also return me to the work with a slightly different sense of scale.', color: 'blue', photos: [lifePhotos[1], lifePhotos[2], lifePhotos[3]] },
-  { id: 'california', eyebrow: 'WEST COAST / NOW', title: 'Life in California', summary: 'Los Angeles is the current base: building spatial intelligence by day and playable science fiction after hours.', color: 'orange', photos: [lifePhotos[8], lifePhotos[7], lifePhotos[6]] },
+  { id: 'manchester', eyebrow: 'UK / 2023', title: 'Life in Manchester', summary: 'Grey skies, long walks, robotics, football, and the first feeling that the world could become much larger.', photos: ukPhotos },
+  { id: 'madison', eyebrow: 'WISCONSIN / FRIENDS', title: 'Life in Madison', summary: 'Research happened in the lab. The rest of the education happened around dinner tables, road trips, and conversations after class.', photos: [lifePhotos[0], lifePhotos[4], lifePhotos[5]] },
+  { id: 'travelling', eyebrow: 'AWAY / IN BETWEEN', title: 'Travelling', summary: 'New places interrupt routine. They also return me to the work with a slightly different sense of scale.', photos: [lifePhotos[1], lifePhotos[2], lifePhotos[3]] },
+  { id: 'california', eyebrow: 'WEST COAST / NOW', title: 'Life in California', summary: 'Los Angeles is the current base: building spatial intelligence by day and playable science fiction after hours.', photos: [lifePhotos[8], lifePhotos[7], lifePhotos[6]] },
 ];
 
 const photoCount = photoStories.reduce((total, story) => total + story.photos.length, 0);
@@ -169,47 +163,6 @@ function FieldbookContact() {
         ))}
       </div>
     </address>
-  );
-}
-
-function DesignSwitcher({ active, setActive }: { active: Direction; setActive: (value: Direction) => void }) {
-  return (
-    <aside className="design-switcher" aria-label="Design directions">
-      <div className="switcher-heading"><span className="switcher-dot" /><span>Tom-me / Study 02</span></div>
-      <div className="switcher-options">
-        {directions.map((direction) => (
-          <button
-            className={active === direction.id ? 'is-active' : ''}
-            key={direction.id}
-            onClick={() => setActive(direction.id)}
-            type="button"
-          >
-            <span className="switch-number">{direction.number}</span>
-            <span><strong>{direction.name}</strong><small>{direction.note}</small></span>
-          </button>
-        ))}
-      </div>
-      <p>点击头像切换 · 3 portraits</p>
-    </aside>
-  );
-}
-
-function OrganizationLinks() {
-  return (
-    <div className="organization-links">
-      {organizations.map((organization, index) => (
-        <a href={organization.href} key={organization.id} target="_blank" rel="noreferrer">
-          <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`}>
-            <img src={organization.logo} alt={`${organization.name} logo`} />
-          </span>
-          <span className="organization-copy">
-            <small>{String(index + 1).padStart(2, '0')} / {organization.relation}</small>
-            <strong>{organization.name}</strong>
-          </span>
-          <Arrow />
-        </a>
-      ))}
-    </div>
   );
 }
 
@@ -387,57 +340,6 @@ function FieldbookAlbumViewer({ album, onClose }: { album: AlbumSet; onClose: ()
           ))}
         </div>
       </div>
-    </div>,
-    document.body,
-  );
-}
-
-function UrbanAlbumViewer({ album, onClose }: { album: AlbumSet; onClose: () => void }) {
-  const [activePhoto, setActivePhoto] = useState(0);
-  const current = album.photos[activePhoto];
-  const move = (offset: number) => setActivePhoto((index) => (index + offset + album.photos.length) % album.photos.length);
-
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-      if (event.key === 'ArrowLeft') setActivePhoto((index) => (index - 1 + album.photos.length) % album.photos.length);
-      if (event.key === 'ArrowRight') setActivePhoto((index) => (index + 1) % album.photos.length);
-    };
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [album.photos.length, onClose]);
-
-  const ticker = `${album.title} — ${current.title} — ${current.place} — ${current.note}`;
-  return createPortal(
-    <div className={`urban-album-viewer is-${album.color}`} role="dialog" aria-modal="true" aria-label={`${album.title} album`}>
-      <header>
-        <span>ARCHIVE SIGNAL / {album.eyebrow}</span>
-        <strong>{album.title}</strong>
-        <button type="button" onClick={onClose} aria-label="Close album">CLOSE ×</button>
-      </header>
-      <div className="urban-album-stage">
-        <aside>
-          <span>ALBUM NOTE</span>
-          <h2>{album.title}</h2>
-          <p>{album.summary}</p>
-          <small>{String(activePhoto + 1).padStart(2, '0')} / {String(album.photos.length).padStart(2, '0')}</small>
-        </aside>
-        <figure>
-          <img src={current.src} alt={current.title} />
-          <figcaption><strong>{current.title}</strong><span>{current.place}</span></figcaption>
-        </figure>
-        <div className="urban-album-controls">
-          <button type="button" onClick={() => move(-1)} aria-label="Previous photograph">← PREV</button>
-          <div>{album.photos.map((photo, index) => <button type="button" className={index === activePhoto ? 'is-active' : ''} onClick={() => setActivePhoto(index)} key={photo.src} aria-label={`Show ${photo.title}`}>{String(index + 1).padStart(2, '0')}</button>)}</div>
-          <button type="button" onClick={() => move(1)} aria-label="Next photograph">NEXT →</button>
-        </div>
-      </div>
-      <div className="urban-album-ticker" aria-label={ticker}><span>{ticker}{' /// '}{ticker}{' /// '}</span></div>
     </div>,
     document.body,
   );
@@ -641,263 +543,22 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
   );
 }
 
-function UrbanTimeline() {
-  return (
-    <div className="urban-timeline">
-      {organizations.map((organization, index) => (
-        <details className="urban-timeline-entry" key={organization.id}>
-          <summary>
-            <span className="urban-timeline-number">{String(index + 1).padStart(2, '0')}</span>
-            <span className="urban-timeline-rail" aria-hidden="true"><i /></span>
-            <span className="urban-timeline-shell">
-              <span className="urban-timeline-lead">
-                <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`}>
-                  <img src={organization.logo} alt="" />
-                </span>
-                <span className="urban-timeline-copy">
-                  <small>{organization.dates}</small>
-                  <strong>{organization.name}</strong>
-                  <em>{organization.role}</em>
-                  <span>{organization.summary}</span>
-                </span>
-                <span className="urban-timeline-toggle" aria-hidden="true">＋</span>
-              </span>
-              <span className="urban-timeline-details">
-                <span className="urban-detail-ticker" aria-hidden="true"><span>{organization.name} /// {organization.role} /// {organization.dates} /// {organization.name} /// {organization.role} /// {organization.dates} /// </span></span>
-                <span className="urban-timeline-details-grid">
-                  <span>FIELD NOTES / THIS CHAPTER</span>
-                  <span className="urban-detail-points">{organization.details.map((detail) => <span key={detail}>• {detail}</span>)}</span>
-                  <a href={organization.href} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>OPEN INSTITUTION <Arrow /></a>
-                </span>
-              </span>
-            </span>
-          </summary>
-        </details>
-      ))}
-    </div>
-  );
-}
-
-function UrbanPublications() {
-  return (
-    <div className="urban-publication-list">
-      <article className="urban-publication-coming">
-        <time>NEXT</time>
-        <span className="urban-publication-rail" aria-hidden="true"><i /></span>
-        <div><small>TRANSMISSION IN PROGRESS</small><strong>MORE COMING SOON.</strong></div>
-      </article>
-      <details className="urban-publication is-placeholder">
-        <summary>
-          <time><strong>MAY</strong><span>2026</span></time>
-          <span className="urban-publication-rail" aria-hidden="true"><i /></span>
-          <span className="urban-publication-shell">
-            <span className="urban-publication-lead">
-              <span className="urban-publication-record">
-                <span className="urban-paper-figure is-sample"><i>FIG—A</i><b>PREVIEW</b></span>
-                <span className="urban-publication-copy"><small>PLACEHOLDER / DESIGN PREVIEW</small><strong>Geometry-Guided Correspondence for Long-Horizon Visual Localization</strong><span><b>Chenghao Jiang</b>, sample collaborators</span></span>
-              </span>
-              <span className="urban-publication-action"><small>DESIGN PREVIEW</small><span>NOT A PUBLICATION</span></span>
-            </span>
-            <span className="urban-publication-abstract">
-              <span className="urban-abstract-ticker" aria-hidden="true"><span>ABSTRACT FEED /// GEOMETRY-GUIDED CORRESPONDENCE /// DESIGN PREVIEW /// ABSTRACT FEED /// GEOMETRY-GUIDED CORRESPONDENCE /// DESIGN PREVIEW /// </span></span>
-              <span className="urban-publication-abstract-copy"><small>SAMPLE ABSTRACT</small><span>This placeholder explores a correspondence frontend designed for long-horizon aerial video, with an emphasis on geometric supervision, practical latency, and diagnosing how matching behavior propagates into trajectory error.</span></span>
-            </span>
-          </span>
-        </summary>
-      </details>
-      <details className="urban-publication is-placeholder">
-        <summary>
-          <time><strong>FEB</strong><span>2026</span></time>
-          <span className="urban-publication-rail" aria-hidden="true"><i /></span>
-          <span className="urban-publication-shell">
-            <span className="urban-publication-lead">
-              <span className="urban-publication-record">
-                <span className="urban-paper-figure is-sample is-light"><i>FIG—B</i><b>PREVIEW</b></span>
-                <span className="urban-publication-copy"><small>PLACEHOLDER / DESIGN PREVIEW</small><strong>Disentangling Illumination and Content for Controllable Scene Generation</strong><span>Sample collaborators, <b>Chenghao Jiang</b></span></span>
-              </span>
-              <span className="urban-publication-action"><small>DESIGN PREVIEW</small><span>NOT A PUBLICATION</span></span>
-            </span>
-            <span className="urban-publication-abstract">
-              <span className="urban-abstract-ticker" aria-hidden="true"><span>ABSTRACT FEED /// ILLUMINATION × CONTENT /// DESIGN PREVIEW /// ABSTRACT FEED /// ILLUMINATION × CONTENT /// DESIGN PREVIEW /// </span></span>
-              <span className="urban-publication-abstract-copy"><small>SAMPLE ABSTRACT</small><span>This placeholder studies representations that separate scene content from illumination, then recombine both factors in a controllable generative pipeline for relighting and scene synthesis.</span></span>
-            </span>
-          </span>
-        </summary>
-      </details>
-      <details className="urban-publication">
-        <summary>
-          <time><strong>DEC</strong><span>2025</span></time>
-          <span className="urban-publication-rail" aria-hidden="true"><i /></span>
-          <span className="urban-publication-shell">
-            <span className="urban-publication-lead">
-              <span className="urban-publication-record">
-                <span className="urban-paper-figure"><img src="/images/papers/sharp/figure-1.png" alt="SHARP overview of raw sensor-data sharing and privacy leakage" /></span>
-                <span className="urban-publication-copy"><small>NETWORKED PERCEPTION · COMPUTER VISION · ROBOTICS</small><strong>Privacy-Aware Sharing of Raw Spatial Sensor Data for Cooperative Perception</strong><span>Bangya Liu, Chengpo Yan, <b>Chenghao Jiang</b>, Suman Banerjee, Akarsh Prabhakara</span></span>
-              </span>
-              <span className="urban-publication-action"><small>ARXIV PREPRINT</small><span className="urban-publication-links"><a href="https://arxiv.org/abs/2512.16265" target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>ARXIV <Arrow /></a></span></span>
-            </span>
-            <span className="urban-publication-abstract">
-              <span className="urban-abstract-ticker" aria-hidden="true"><span>ABSTRACT FEED /// SHARP /// PRIVACY-AWARE COOPERATIVE PERCEPTION /// ABSTRACT FEED /// SHARP /// PRIVACY-AWARE COOPERATIVE PERCEPTION /// </span></span>
-              <span className="urban-publication-abstract-copy"><small>ABSTRACT / CONDENSED</small><span>Cooperative perception can strengthen vehicle scene understanding, but sharing raw spatial sensor data introduces privacy risks that may slow adoption. This paper presents SHARP, a research framework for reducing privacy leakage while preserving the value of raw-data collaboration, and frames open questions spanning networked systems, mobile computing, perception, industry, and policy.</span></span>
-            </span>
-          </span>
-        </summary>
-      </details>
-    </div>
-  );
-}
-
-function UrbanSignal({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: { portraitId: PortraitId; onCyclePortrait: () => void; lifeExpanded: boolean; onToggleLife: () => void }) {
-  const portrait = portraits[portraitId];
-  const portraitNumber = portraitOrder.indexOf(portraitId) + 1;
-  const [openAlbumId, setOpenAlbumId] = useState<string | null>(null);
-  const openAlbum = photoStories.find((album) => album.id === openAlbumId);
-  return (
-    <main className="urban-page">
-      <nav className="urban-nav">
-        <a href="#urban-home" className="urban-logo">TOM—ME<span>®</span></a>
-        <div><a href="#urban-network">Timeline</a><a href="#urban-work">Projects</a><a href="#urban-papers">Papers</a><a href="#urban-life">Life</a></div>
-        <span className="urban-place">NEW IN LOS ANGELES / 2026</span>
-      </nav>
-
-      <section className="urban-hero" id="urban-home">
-        <div className="urban-title">
-          <p><span>01</span> Human behind the work</p>
-          <h1>CHENGHAO<br /><i>“TOMMY”</i><br />JIANG</h1>
-          <div className="urban-role"><span>3D VISION</span><span>GAME DESIGN</span><span>WORLD BUILDING</span></div>
-        </div>
-
-        <div className="urban-photo">
-          <button className="portrait-cycle" type="button" onClick={onCyclePortrait} aria-label={`Show next portrait. Current portrait: ${portrait.label}`}>
-            <img src={portrait.src} alt={portrait.alt} style={{ objectPosition: portrait.urbanPosition }} />
-          </button>
-          <div className="urban-sticker">RESEARCHER<br />× DESIGNER</div>
-          <span className="urban-arrow" aria-hidden="true">↘</span>
-          <span className="urban-photo-tag">{portrait.code} / P{portraitNumber} OF 3 / CLICK TO CHANGE</span>
-        </div>
-
-        <div className="urban-copy">
-          <div className="urban-slogan">
-            <span>Personal direction / 未来想做的事</span>
-            <strong>UNDERSTAND<br />REAL WORLDS.<br /><i>BUILD NEW ONES.</i></strong>
-          </div>
-          <div className="urban-bio">
-            <p>
-              I am a 3D vision researcher interested in how machines recover geometry, motion,
-              and place from images. At <b>Tera AI</b>, I work on dense correspondence, visual
-              localization, reconstruction, and the diagnostic tools connecting model behavior
-              to real flight trajectories.
-            </p>
-            <p>
-              My path began with optoelectronics, moved through signal processing in Manchester,
-              and expanded into cooperative perception, generative vision, and Gaussian Splatting
-              across UW–Madison, Johns Hopkins, and HKUST(GZ). Outside the lab, I design and develop
-              <b> Time Block Hero</b>—a science-fiction strategy game about bending time.
-            </p>
-          </div>
-          <div className="urban-actions">
-            <a href="#urban-work">OPEN THE INDEX <Arrow /></a>
-            <a className="is-location" href="https://www.google.com/maps/search/?api=1&query=Los+Angeles%2C+CA" target="_blank" rel="noreferrer">LOS ANGELES, CA</a>
-            <a href="https://github.com/JesusmiCaH" target="_blank" rel="noreferrer">GITHUB</a>
-            <a href="https://www.linkedin.com/in/chenghao-jiang-93a979228" target="_blank" rel="noreferrer">LINKEDIN</a>
-            <a href="https://orcid.org/0009-0009-3555-1869" target="_blank" rel="noreferrer">ORCID</a>
-            <a href="/resume-chenghao-jiang.pdf" target="_blank">OPEN CV</a>
-            <a href="mailto:tommyjiangch@gmail.com">EMAIL</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="urban-tape" aria-label="Current focus"><span>NOW PLAYING</span><strong>GEOMETRY / MOTION / LIGHT / TIME</strong><span>TRACK 001</span></section>
-
-      <section className="urban-network" id="urban-network">
-        <header><span>EXPERIENCE TIMELINE</span><strong>WHERE I&apos;VE BUILT, STUDIED & RESEARCHED</strong><span>2018 → NOW</span></header>
-        <UrbanTimeline />
-      </section>
-
-      <section className="urban-work" id="urban-work">
-        <header><span>SELECTED OUTPUT</span><span>Research & playable worlds</span></header>
-        <div className="urban-work-grid">
-          <a className="urban-research-card" href={featuredProjects[0].href} target="_blank" rel="noreferrer">
-            <span>{featuredProjects[0].meta}</span><div className="urban-target" aria-hidden="true"><i /><i /><i /></div><h2>TERA AI<br />RESEARCH</h2><p>{featuredProjects[0].description}</p><strong>{featuredProjects[0].action} <Arrow /></strong>
-          </a>
-          <a className="urban-game-card" href={featuredProjects[1].href} target="_blank" rel="noreferrer">
-            <img src="/images/projects/time-block-hero.jpg" alt="Time Block Hero world artwork" />
-            <div><span>{featuredProjects[1].meta}</span><h2>TIME BLOCK<br />HERO</h2><p>{featuredProjects[1].description}</p><strong>{featuredProjects[1].action} <Arrow /></strong></div>
-          </a>
-          <article className="urban-work-coming"><span>CHANNEL 03+ / OPEN SLOT</span><strong>MORE<br />COMING SOON.</strong><p>Future research, playable systems, and experiments will appear here when they have a real public record.</p></article>
-        </div>
-      </section>
-
-      <section className="urban-papers" id="urban-papers">
-        <header><span>PUBLICATION TRANSMISSIONS</span><strong>PAPERS / NEWEST FIRST</strong><span>HOVER OR CLICK FOR ABSTRACT</span></header>
-        <UrbanPublications />
-      </section>
-
-      <section className={`urban-life ${lifeExpanded ? 'is-expanded' : 'is-collapsed'}`} id="urban-life">
-        <header><span>OFF HOURS / ON EARTH</span><h2>A CONTACT SHEET<br />OF THE HUMAN.</h2><p>Not a corporate timeline. Just the places and people that keep the work alive.</p></header>
-        <button className="urban-life-toggle" type="button" onClick={onToggleLife} aria-expanded={lifeExpanded} aria-controls="urban-album">
-          <span>{lifeExpanded ? 'COLLAPSE CONTACT SHEET' : 'EXPAND CONTACT SHEET'}</span>
-          <small>{String(photoCount).padStart(2, '0')} FRAMES / 04 ZONES</small>
-          <i aria-hidden="true">{lifeExpanded ? '↑' : '↓'}</i>
-        </button>
-        {lifeExpanded ? (
-          <div className="urban-album-index" id="urban-album">
-            {photoStories.map((album, albumIndex) => (
-              <button className={`urban-album-card is-${album.color}`} type="button" onClick={() => setOpenAlbumId(album.id)} key={album.id}>
-                <span className="urban-album-card-code">ZONE_{String(albumIndex + 1).padStart(2, '0')} / {album.eyebrow}</span>
-                <span className="urban-album-card-image"><img src={album.photos[0].src} alt="" loading="lazy" /><i>{String(album.photos.length).padStart(2, '0')} FRAMES</i></span>
-                <span className="urban-album-card-copy"><strong>{album.title}</strong><small>{album.summary}</small><i>ENTER ALBUM ↗</i></span>
-              </button>
-            ))}
-            <a className="urban-open-signal" href="mailto:tommyjiangch@gmail.com?subject=Let%27s%20make%20the%20next%20frame">
-              <span className="urban-open-index">OPEN CHANNEL / 00</span>
-              <span className="urban-open-copy">
-                <small>NEXT CONNECTION</small>
-                <strong>WANT TO BE IN<br />THE NEXT FRAME?</strong>
-                <p>Say hello. Let&apos;s exchange ideas, build something, or find the next place worth remembering.</p>
-              </span>
-              <span className="urban-open-action">SEND A SIGNAL <Arrow /></span>
-            </a>
-            <button className="urban-life-toggle is-bottom" type="button" onClick={onToggleLife}><span>COLLAPSE CONTACT SHEET</span><small>RETURN TO 04 STACKED SIGNALS</small><i aria-hidden="true">↑</i></button>
-          </div>
-        ) : (
-          <div className="urban-collapsed-stack" id="urban-album">
-            {photoStories.map((album, albumIndex) => (
-              <button className={`is-${album.color}`} type="button" onClick={() => setOpenAlbumId(album.id)} aria-label={`Open ${album.title}`} key={album.id}>
-                <span>ALBUM_{String(albumIndex + 1).padStart(2, '0')} / {String(album.photos.length).padStart(2, '0')} FRAMES</span>
-                <span className="urban-stack-cover"><img src={album.photos[0].src} alt="" loading="lazy" /><strong>{album.title}</strong></span>
-                <i>OPEN SIGNAL ↗</i>
-              </button>
-            ))}
-          </div>
-        )}
-      </section>
-      {openAlbum && <UrbanAlbumViewer album={openAlbum} onClose={() => setOpenAlbumId(null)} />}
-    </main>
-  );
-}
-
 export default function Home() {
-  const [active, setActive] = useState<Direction>('fieldbook');
   const [activePortrait, setActivePortrait] = useState<PortraitId>('brighton');
-  const [expandedLife, setExpandedLife] = useState<Record<Direction, boolean>>({ fieldbook: false, magazine: false });
+  const [lifeExpanded, setLifeExpanded] = useState(false);
   const cyclePortrait = () => {
     const currentIndex = portraitOrder.indexOf(activePortrait);
     setActivePortrait(portraitOrder[(currentIndex + 1) % portraitOrder.length]);
   };
 
-  useEffect(() => {
-    document.documentElement.dataset.direction = active;
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [active]);
-
   return (
-    <>
-      <DesignSwitcher active={active} setActive={setActive} />
-      <div className="design-canvas" key={active}>
-        {active === 'fieldbook' && <Fieldbook portraitId={activePortrait} onCyclePortrait={cyclePortrait} lifeExpanded={expandedLife.fieldbook} onToggleLife={() => setExpandedLife((state) => ({ ...state, fieldbook: !state.fieldbook }))} />}
-        {active === 'magazine' && <UrbanSignal portraitId={activePortrait} onCyclePortrait={cyclePortrait} lifeExpanded={expandedLife.magazine} onToggleLife={() => setExpandedLife((state) => ({ ...state, magazine: !state.magazine }))} />}
-      </div>
-    </>
+    <div className="design-canvas">
+      <Fieldbook
+        portraitId={activePortrait}
+        onCyclePortrait={cyclePortrait}
+        lifeExpanded={lifeExpanded}
+        onToggleLife={() => setLifeExpanded((expanded) => !expanded)}
+      />
+    </div>
   );
 }
