@@ -430,46 +430,6 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
             <span className="paper-timeline-mark" aria-hidden="true"><i /></span>
             <div><small>WORK IN PROGRESS</small><strong>More coming soon.</strong></div>
           </article>
-          <details className="fieldbook-paper is-placeholder">
-            <summary>
-              <time><strong>May</strong><span>2026</span></time>
-              <span className="paper-timeline-mark" aria-hidden="true"><i /></span>
-              <span className="fieldbook-paper-shell">
-                <span className="fieldbook-paper-lead">
-                  <span className="paper-record">
-                    <span className="paper-figure is-sample" aria-label="Sample figure placeholder"><i>FIG. A</i><b>DESIGN<br />PREVIEW</b></span>
-                    <span className="paper-record-copy">
-                      <small>PLACEHOLDER / DESIGN PREVIEW</small>
-                      <strong>Geometry-Guided Correspondence for Long-Horizon Visual Localization</strong>
-                      <span><b>Chenghao Jiang</b>, sample collaborators</span>
-                    </span>
-                  </span>
-                  <span className="paper-actions"><small>DESIGN PREVIEW</small><span className="paper-action-note">NOT A PUBLICATION</span></span>
-                </span>
-                <span className="paper-abstract"><small>SAMPLE ABSTRACT</small><span>This placeholder explores a correspondence frontend designed for long-horizon aerial video, with an emphasis on geometric supervision, practical latency, and diagnosing how matching behavior propagates into trajectory error.</span></span>
-              </span>
-            </summary>
-          </details>
-          <details className="fieldbook-paper is-placeholder">
-            <summary>
-              <time><strong>Feb</strong><span>2026</span></time>
-              <span className="paper-timeline-mark" aria-hidden="true"><i /></span>
-              <span className="fieldbook-paper-shell">
-                <span className="fieldbook-paper-lead">
-                  <span className="paper-record">
-                    <span className="paper-figure is-sample is-light" aria-label="Sample figure placeholder"><i>FIG. B</i><b>DESIGN<br />PREVIEW</b></span>
-                    <span className="paper-record-copy">
-                      <small>PLACEHOLDER / DESIGN PREVIEW</small>
-                      <strong>Disentangling Illumination and Content for Controllable Scene Generation</strong>
-                      <span>Sample collaborators, <b>Chenghao Jiang</b></span>
-                    </span>
-                  </span>
-                  <span className="paper-actions"><small>DESIGN PREVIEW</small><span className="paper-action-note">NOT A PUBLICATION</span></span>
-                </span>
-                <span className="paper-abstract"><small>SAMPLE ABSTRACT</small><span>This placeholder studies representations that separate scene content from illumination, then recombine both factors in a controllable generative pipeline for relighting and scene synthesis.</span></span>
-              </span>
-            </summary>
-          </details>
           <details className="fieldbook-paper">
             <summary>
               <time><strong>Dec</strong><span>2025</span></time>
