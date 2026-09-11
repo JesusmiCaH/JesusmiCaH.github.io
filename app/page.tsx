@@ -29,6 +29,8 @@ const featuredProjects = [
     description: 'Researching geometry-guided correspondence, visual localization, and diagnostic workflows for long-horizon flight video.',
     href: 'https://www.tera-ai.com/blog/delivering-autonomy-in-days-instead-of-months-via-software',
     action: 'Read the public context',
+    image: '/images/projects/tera-ai-research.png',
+    imageAlt: 'Aerial view of a desert runway from Tera AI’s official article',
     kind: 'research',
   },
   {
@@ -38,6 +40,8 @@ const featuredProjects = [
     description: 'A science-fiction strategy game where time is both the battlefield and the most valuable resource.',
     href: 'https://time-block-hero.github.io/tbh-website/index-en.html',
     action: 'Visit project site',
+    image: '/images/projects/time-block-hero.jpg',
+    imageAlt: 'Time Block Hero science-fiction world',
     kind: 'game',
   },
 ];
@@ -221,19 +225,22 @@ function FieldbookProjects() {
 
   const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
-    if ((event.target as Element).closest?.('a, button')) return;
+    if ((event.target as Element).closest?.('a:not(.fieldbook-project-frame), button')) return;
     const rail = railRef.current;
     if (!rail) return;
     dragRef.current = { active: true, startX: event.clientX, startScroll: rail.scrollLeft, moved: false, suppressUntil: 0 };
-    rail.setPointerCapture(event.pointerId);
-    setIsDragging(true);
   };
 
   const moveDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
     const rail = railRef.current;
     if (!rail || !dragRef.current.active) return;
     const distance = event.clientX - dragRef.current.startX;
-    if (Math.abs(distance) > 5) dragRef.current.moved = true;
+    if (!dragRef.current.moved) {
+      if (Math.abs(distance) <= 5) return;
+      dragRef.current.moved = true;
+      rail.setPointerCapture(event.pointerId);
+      setIsDragging(true);
+    }
     rail.scrollLeft = dragRef.current.startScroll - distance;
   };
 
@@ -267,15 +274,16 @@ function FieldbookProjects() {
         onPointerMove={moveDrag}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
+        onPointerLeave={endDrag}
         onClickCapture={protectLinksAfterDrag}
         onDragStart={(event) => event.preventDefault()}
       >
         {featuredProjects.map((project) => (
           <article className={`fieldbook-project-card is-${project.kind}`} key={project.no}>
-            <span className="fieldbook-project-frame">
+            <a className="fieldbook-project-frame" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`} draggable="false">
               <span className="note-top"><span>{project.no}</span><span>{project.kind}</span></span>
-              {project.kind === 'game' ? <img src="/images/projects/time-block-hero.jpg" alt="Time Block Hero science-fiction world" draggable="false" /> : <span className="fieldbook-research-visual" aria-hidden="true"><i /><i /><i /><b>LOCALIZE</b></span>}
-            </span>
+              <img src={project.image} alt={project.imageAlt} draggable="false" />
+            </a>
             <span className="fieldbook-project-copy">
               <small>{project.meta}</small>
               <strong>{project.title}</strong>

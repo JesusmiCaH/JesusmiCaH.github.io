@@ -179,17 +179,10 @@ button { color: inherit; font: inherit; }
 .fieldbook-project-card:hover { z-index: 2; background: #fffdf8; box-shadow: 12px 18px 0 rgb(74 57 36 / 10%); transform: translateY(-7px) rotate(-.18deg); }
 .fieldbook-project-frame { position: relative; height: 300px; padding: 34px 14px 14px; display: block; overflow: hidden; border-bottom: 1px solid #ada397; background: #d9d0c3; }
 .fieldbook-project-frame > .note-top { position: absolute; z-index: 2; left: 14px; right: 14px; top: 11px; color: #655e56; }
-.fieldbook-project-frame > img, .fieldbook-research-visual { width: 100%; height: 100%; margin: 0; display: block; object-fit: cover; }
+.fieldbook-project-frame:focus-visible { outline: 3px solid #29241f; outline-offset: -4px; }
+.fieldbook-project-frame > img { width: 100%; height: 100%; margin: 0; display: block; object-fit: cover; }
 .fieldbook-project-frame > img { transition: transform .45s cubic-bezier(.2,.75,.2,1), filter .3s ease; }
 .fieldbook-project-card:hover .fieldbook-project-frame > img { filter: saturate(1.07) contrast(1.02); transform: scale(1.018); }
-.fieldbook-research-visual { position: relative; overflow: hidden; background-color: #243b38; background-image: linear-gradient(rgb(255 255 255 / 9%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 9%) 1px, transparent 1px); background-size: 25px 25px; }
-.fieldbook-research-visual::before, .fieldbook-research-visual::after { content: ''; position: absolute; left: 50%; top: 50%; border: 1px solid rgb(223 255 67 / 70%); border-radius: 50%; transform: translate(-50%, -50%); }
-.fieldbook-research-visual::before { width: 140px; height: 140px; }
-.fieldbook-research-visual::after { width: 75px; height: 75px; }
-.fieldbook-research-visual i { position: absolute; left: 50%; top: 50%; width: 190px; height: 1px; background: rgb(255 255 255 / 42%); transform: translate(-50%, -50%) rotate(32deg); }
-.fieldbook-research-visual i:nth-child(2) { transform: translate(-50%, -50%) rotate(-32deg); }
-.fieldbook-research-visual i:nth-child(3) { width: 8px; height: 8px; border-radius: 50%; background: #dfff43; box-shadow: 0 0 19px #dfff43; }
-.fieldbook-research-visual b { position: absolute; right: 11px; bottom: 9px; color: #dfff43; font: 7px var(--font-geist-mono); letter-spacing: .14em; }
 .fieldbook-project-copy { min-height: 198px; padding: 18px 20px 20px; display: flex; flex: 1; flex-direction: column; }
 .fieldbook-project-copy small { color: #736c63; font: 9px var(--font-geist-mono); text-transform: uppercase; letter-spacing: .08em; }
 .fieldbook-project-copy > strong { margin: 8px 0 9px; font: 400 29px/1.02 Georgia, serif; letter-spacing: -.035em; }
