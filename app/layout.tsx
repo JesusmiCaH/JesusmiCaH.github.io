@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 
 export const metadata: Metadata = {
   title: 'Chenghao “Tommy” Jiang — 3D Vision & Game Design',
-  description: 'The personal portfolio of Chenghao “Tommy” Jiang, a 3D vision researcher and game designer working across spatial intelligence, visual localization, and playable worlds.',
+  description: 'Chenghao “Tommy” Jiang is a 3D vision researcher and game designer actively seeking new research roles in 3D computer vision, SLAM, and generative models.',
   icons: {
     icon: [
       { url: '/favicon.ico?v=tommy-8bit-1', sizes: '16x16 32x32 48x48', type: 'image/x-icon' },
