@@ -59,7 +59,7 @@ const organizations = [
     ],
   },
   {
-    id: 'jhu', name: 'Johns Hopkins University', dates: 'Sep 2025 — Feb 2026', timelineFromMonth: 'Sep', timelineFromYear: '2025', timelineToMonth: 'Feb', timelineToYear: '2026', relation: 'Sep 2025 — Feb 2026 · Research', role: 'Research Assistant', href: 'https://www.jhu.edu/', logo: '/images/orgs/jhu.png', dark: true,
+    id: 'jhu', name: 'Johns Hopkins University', dates: 'Sep 2025 — Feb 2026', timelineFromMonth: 'Sep', timelineFromYear: '2025', timelineToMonth: 'Feb', timelineToYear: '2026', relation: 'Sep 2025 — Feb 2026 · Research', role: 'Research Assistant', href: 'https://www.jhu.edu/', logo: '/images/orgs/jhu.png', dark: false,
     summary: 'Explored how generative models can separate and recombine scene content and illumination.',
     details: [
       'Designed a ViT image encoder to disentangle intrinsic scene content from extrinsic illumination.',
@@ -192,7 +192,7 @@ function FieldbookTimeline() {
             <summary>
               <span className="timeline-entry-shell">
                 <span className="timeline-entry-lead">
-                  <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`}>
+                  <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`} data-organization={organization.id}>
                     <img src={organization.logo} alt="" />
                   </span>
                   <span>
