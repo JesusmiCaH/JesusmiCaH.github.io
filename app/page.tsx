@@ -48,7 +48,7 @@ const featuredProjects = [
 
 const organizations = [
   {
-    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Sep 2026', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Sep', timelineToYear: '2026', relation: 'Aug 2025 — Sep 2026 · 3D vision', role: 'Former 3D Vision Researcher · previously Research Intern', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.svg', dark: true,
+    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Sep 2026', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Sep', timelineToYear: '2026', relation: 'Aug 2025 — Sep 2026 · 3D vision', role: '3D Vision Researcher', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.png', dark: false,
     summary: 'Worked on visual correspondence, camera-based navigation, and 3D reconstruction.',
     details: [
       'Built a geometry-guided data pipeline to prepare training and evaluation samples for learned visual correspondence in camera-based navigation.',
@@ -59,7 +59,7 @@ const organizations = [
     ],
   },
   {
-    id: 'jhu', name: 'Johns Hopkins University', dates: 'Sep 2025 — Feb 2026', timelineFromMonth: 'Sep', timelineFromYear: '2025', timelineToMonth: 'Feb', timelineToYear: '2026', relation: 'Sep 2025 — Feb 2026 · Research', role: 'Research Assistant', href: 'https://www.jhu.edu/', logo: '/images/orgs/jhu.png', dark: true,
+    id: 'jhu', name: 'Johns Hopkins University', dates: 'Sep 2025 — Feb 2026', timelineFromMonth: 'Sep', timelineFromYear: '2025', timelineToMonth: 'Feb', timelineToYear: '2026', relation: 'Sep 2025 — Feb 2026 · Research', role: 'Research Assistant', href: 'https://www.jhu.edu/', logo: '/images/orgs/jhu.png', dark: false,
     summary: 'Explored how generative models can separate and recombine scene content and illumination.',
     details: [
       'Designed a ViT image encoder to disentangle intrinsic scene content from extrinsic illumination.',
@@ -192,7 +192,7 @@ function FieldbookTimeline() {
             <summary>
               <span className="timeline-entry-shell">
                 <span className="timeline-entry-lead">
-                  <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`}>
+                  <span className={`organization-mark ${organization.dark ? 'is-dark' : 'is-light'}`} data-organization={organization.id}>
                     <img src={organization.logo} alt="" />
                   </span>
                   <span>
@@ -205,7 +205,7 @@ function FieldbookTimeline() {
                 <span className="timeline-entry-details">
                   <small>Notes from this chapter</small>
                   <span className="timeline-entry-points">{organization.details.map((detail) => <span key={detail}>{detail}</span>)}</span>
-                  <a href={organization.href} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>Visit institution <Arrow /></a>
+                  <a href={organization.href} target="_blank" rel="noreferrer" aria-label={`Visit ${organization.name} website`} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}><span>Website</span><Arrow /></a>
                 </span>
               </span>
             </summary>
@@ -398,8 +398,8 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
           <p className="fieldbook-slogan">I reconstruct real worlds—and build new ones to <i>play in.</i></p>
           <div className="fieldbook-bio">
             <p>
-              I am a 3D vision researcher interested in how machines recover geometry, motion,
-              and place from images. I am also an independent game developer working on my
+              I am a 3D vision researcher interested in advancing spatial intelligence by
+              enabling AI to perceive and understand the real world. I am also an independent game developer working on my
               personal game, <b>Time Block Hero</b>. I am <b>actively seeking new research roles</b> in
               3D computer vision, SLAM, and generative models, with a particular interest in
               <b> world models</b>. Previously, I worked at{' '}
