@@ -24,9 +24,9 @@ const mascotStickers = [
 const featuredProjects = [
   {
     no: '01',
-    meta: 'Tera AI · Research / Public context',
+    meta: 'Tera AI · Past research / Public context',
     title: 'Tera AI Research',
-    description: 'Researching geometry-guided correspondence, visual localization, and diagnostic workflows for long-horizon flight video.',
+    description: 'Worked on learned visual correspondence, camera-based navigation, and video-based 3D reconstruction.',
     href: 'https://www.tera-ai.com/blog/delivering-autonomy-in-days-instead-of-months-via-software',
     action: 'Read the public context',
     image: '/images/projects/tera-ai-research.png',
@@ -48,12 +48,14 @@ const featuredProjects = [
 
 const organizations = [
   {
-    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Present', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Now', timelineToYear: '2026', relation: 'Aug 2025 — Present · 3D vision', role: '3D Vision Researcher · previously Research Intern', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.svg', dark: true,
-    summary: 'Building practical perception systems for long-horizon, GPS-denied visual localization.',
+    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Sep 2026', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Sep', timelineToYear: '2026', relation: 'Aug 2025 — Sep 2026 · 3D vision', role: 'Former 3D Vision Researcher · previously Research Intern', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.svg', dark: true,
+    summary: 'Worked on visual correspondence, camera-based navigation, and 3D reconstruction.',
     details: [
-      'Built geometry-guided pseudo-label and evaluation pipelines for dense image correspondence.',
-      'Fine-tuned and evaluated correspondence frontends under latency and robustness constraints.',
-      'Connected correspondence behavior to GPS-referenced trajectory error through flight-replay diagnostics.',
+      'Built a geometry-guided data pipeline to prepare training and evaluation samples for learned visual correspondence in camera-based navigation.',
+      'Fine-tuned and evaluated learned correspondence models to improve visual localization robustness under real-time operating constraints.',
+      'Built flight-replay diagnostics linking intermediate matching and pose behavior to trajectory-level failures; curated reproducible hard cases to guide targeted fine-tuning.',
+      'Implemented and benchmarked video-based 3D reconstruction pipelines, assessing geometric accuracy and visual consistency.',
+      'Previously evaluated learning-based 3D perception for long video sequences as a part-time Research Intern.',
     ],
   },
   {
@@ -156,7 +158,7 @@ const contactLinks: Array<{ icon: ContactIconName; label: string; value: string;
 function FieldbookContact() {
   return (
     <address className="fieldbook-contact">
-      <header><span>Contact / Find me</span><p>Research, games, or a good conversation—say hello.</p></header>
+      <header><span>Contact / Find me</span><p>Have a research opportunity? I would love to hear from you.</p></header>
       <div>
         {contactLinks.map((link) => (
           <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined} key={link.label}>
@@ -388,7 +390,7 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
         </div>
 
         <div className="fieldbook-intro">
-          <p className="fieldbook-role">3D vision researcher / game designer</p>
+          <p className="fieldbook-role">3D vision researcher / independent game developer</p>
           <div className="fieldbook-name">
             <h1><em>Tommy</em><span> Jiang</span></h1>
             <p className="fieldbook-legal-name"><span>Chenghao Jiang</span><span lang="zh-CN">蒋承浩</span></p>
@@ -397,16 +399,20 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
           <div className="fieldbook-bio">
             <p>
               I am a 3D vision researcher interested in how machines recover geometry, motion,
-              and place from images. At <b>Tera AI</b>, I work on dense correspondence,
-              visual localization, reconstruction, and the diagnostic tools that connect model
-              behavior to real flight trajectories.
+              and place from images. I am also an independent game developer working on my
+              personal game, <b>Time Block Hero</b>. I am <b>actively seeking new research roles</b> in
+              3D computer vision, SLAM, and generative models, with a particular interest in
+              <b> world models</b>. Previously, I worked at{' '}
+              <b>Tera AI</b> on visual correspondence, camera-based navigation, and
+              video-based 3D reconstruction.
             </p>
             <p>
-              My path into spatial intelligence began with optoelectronics, continued through
-              signal processing in Manchester, and expanded into cooperative perception,
-              generative vision, and Gaussian Splatting across UW–Madison, Johns Hopkins, and
-              HKUST(GZ). Outside the lab, I design and develop <b>Time Block Hero</b>—a
-              science-fiction strategy game about bending time.
+              My path into computer vision began with optoelectronics, followed by signal
+              processing at the University of Manchester. At UW–Madison, I explored
+              privacy-aware cooperative perception; at Johns Hopkins, controllable image
+              relighting; and at HKUST(GZ), animatable human Gaussian Splatting. Across these
+              experiences, I have worked on connecting research ideas with practical
+              implementations and careful evaluation.
             </p>
           </div>
           <FieldbookContact />
