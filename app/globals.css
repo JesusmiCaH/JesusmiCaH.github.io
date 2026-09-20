@@ -145,7 +145,7 @@ button { color: inherit; font: inherit; }
 .fieldbook-paper:hover .paper-abstract,
 .fieldbook-paper[open] .paper-abstract { max-height: 280px; padding: 27px 23px 30px var(--reveal-left); border-top-color: #b8afa2; opacity: 1; transform: none; }
 .timeline-entry-details > small { display: block; color: #766e65; font: 9px var(--font-geist-mono); text-transform: uppercase; letter-spacing: .12em; }
-.timeline-entry-points { margin: 11px 0 14px; display: grid; gap: 5px; color: #514a43; font: 14px/1.55 Georgia, serif; }
+.timeline-entry-points { margin: 11px 0 4px; display: grid; gap: 5px; color: #514a43; font: 14px/1.55 Georgia, serif; }
 .timeline-entry-points > span { position: relative; padding-left: 16px; }
 .timeline-entry-points > span::before { content: '•'; position: absolute; left: 0; color: #ef5a31; }
 .timeline-entry-details a { min-height: 44px; max-width: 100%; display: inline-flex; gap: 7px; align-items: center; padding: 10px 0; font: 14px/1.5 var(--font-geist-mono); transition: color .2s ease; }
@@ -443,7 +443,7 @@ button { color: inherit; font: inherit; }
 }
 
 /* Let expanded timeline content grow with text wrapping and browser zoom. */
-.timeline-entry:is(:hover, [open], :focus-within) .timeline-entry-details { max-height: none; }
+.timeline-entry:is(:hover, [open], :focus-within) .timeline-entry-details { max-height: none; padding-top: 18px; padding-bottom: 12px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
