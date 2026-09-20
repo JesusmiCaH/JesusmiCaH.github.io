@@ -48,7 +48,7 @@ const featuredProjects = [
 
 const organizations = [
   {
-    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Sep 2026', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Sep', timelineToYear: '2026', relation: 'Aug 2025 — Sep 2026 · 3D vision', role: 'Former 3D Vision Researcher · previously Research Intern', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.png', dark: false,
+    id: 'tera', name: 'Tera AI', dates: 'Aug 2025 — Sep 2026', timelineFromMonth: 'Aug', timelineFromYear: '2025', timelineToMonth: 'Sep', timelineToYear: '2026', relation: 'Aug 2025 — Sep 2026 · 3D vision', role: '3D Vision Researcher', href: 'https://www.tera-ai.com/', logo: '/images/orgs/tera.png', dark: false,
     summary: 'Worked on visual correspondence, camera-based navigation, and 3D reconstruction.',
     details: [
       'Built a geometry-guided data pipeline to prepare training and evaluation samples for learned visual correspondence in camera-based navigation.',
