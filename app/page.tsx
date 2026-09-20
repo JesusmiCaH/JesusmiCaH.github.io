@@ -390,7 +390,7 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
         </div>
 
         <div className="fieldbook-intro">
-          <p className="fieldbook-role">Independent researcher / developer</p>
+          <p className="fieldbook-role">3D vision researcher / independent game developer</p>
           <div className="fieldbook-name">
             <h1><em>Tommy</em><span> Jiang</span></h1>
             <p className="fieldbook-legal-name"><span>Chenghao Jiang</span><span lang="zh-CN">蒋承浩</span></p>
@@ -398,18 +398,20 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
           <p className="fieldbook-slogan">I reconstruct real worlds—and build new ones to <i>play in.</i></p>
           <div className="fieldbook-bio">
             <p>
-              I am an independent researcher and developer interested in how machines recover geometry, motion,
-              and place from images. I am <b>actively seeking new research roles</b> in
-              3D computer vision, SLAM, and generative models. Previously, I worked at
-              <b> Tera AI</b> on visual correspondence, camera-based navigation, and
+              I am a 3D vision researcher interested in how machines recover geometry, motion,
+              and place from images. I am also an independent game developer working on my
+              personal game, <b>Time Block Hero</b>. I am <b>actively seeking new research roles</b> in
+              3D computer vision, SLAM, and generative models. Previously, I worked at{' '}
+              <b>Tera AI</b> on visual correspondence, camera-based navigation, and
               video-based 3D reconstruction.
             </p>
             <p>
-              My path into spatial intelligence began with optoelectronics, continued through
-              signal processing in Manchester, and expanded into cooperative perception,
-              generative vision, and Gaussian Splatting across UW–Madison, Johns Hopkins, and
-              HKUST(GZ). Outside the lab, I design and develop <b>Time Block Hero</b>—a
-              science-fiction strategy game about bending time.
+              My path into computer vision began with optoelectronics, followed by signal
+              processing at the University of Manchester. At UW–Madison, I explored
+              privacy-aware cooperative perception; at Johns Hopkins, controllable image
+              relighting; and at HKUST(GZ), animatable human Gaussian Splatting. Across these
+              experiences, I have worked on connecting research ideas with practical
+              implementations and careful evaluation.
             </p>
           </div>
           <FieldbookContact />
