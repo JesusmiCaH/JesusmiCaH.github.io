@@ -401,7 +401,8 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
               I am a 3D vision researcher interested in how machines recover geometry, motion,
               and place from images. I am also an independent game developer working on my
               personal game, <b>Time Block Hero</b>. I am <b>actively seeking new research roles</b> in
-              3D computer vision, SLAM, and generative models. Previously, I worked at{' '}
+              3D computer vision, SLAM, and generative models, with a particular interest in
+              <b> world models</b>. Previously, I worked at{' '}
               <b>Tera AI</b> on visual correspondence, camera-based navigation, and
               video-based 3D reconstruction.
             </p>
