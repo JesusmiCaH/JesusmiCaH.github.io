@@ -188,7 +188,7 @@ function FieldbookTimeline() {
             </span>
           </time>
           <span className="timeline-spine" aria-hidden="true"><i /></span>
-          <details className={`timeline-entry ${organization.id === 'tera' ? 'is-tera' : ''}`}>
+          <details className="timeline-entry">
             <summary>
               <span className="timeline-entry-shell">
                 <span className="timeline-entry-lead">
