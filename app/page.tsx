@@ -390,7 +390,7 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
         </div>
 
         <div className="fieldbook-intro">
-          <p className="fieldbook-role">3D vision researcher / game designer</p>
+          <p className="fieldbook-role">Independent researcher / developer</p>
           <div className="fieldbook-name">
             <h1><em>Tommy</em><span> Jiang</span></h1>
             <p className="fieldbook-legal-name"><span>Chenghao Jiang</span><span lang="zh-CN">蒋承浩</span></p>
@@ -398,7 +398,7 @@ function Fieldbook({ portraitId, onCyclePortrait, lifeExpanded, onToggleLife }: 
           <p className="fieldbook-slogan">I reconstruct real worlds—and build new ones to <i>play in.</i></p>
           <div className="fieldbook-bio">
             <p>
-              I am a 3D vision researcher interested in how machines recover geometry, motion,
+              I am an independent researcher and developer interested in how machines recover geometry, motion,
               and place from images. I am <b>actively seeking new research roles</b> in
               3D computer vision, SLAM, and generative models. Previously, I worked at
               <b> Tera AI</b> on visual correspondence, camera-based navigation, and
