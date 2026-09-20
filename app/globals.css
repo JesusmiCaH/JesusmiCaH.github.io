@@ -138,7 +138,7 @@ button { color: inherit; font: inherit; }
 .timeline-entry:hover .timeline-entry-lead > i, .timeline-entry[open] .timeline-entry-lead > i, .timeline-entry:focus-within .timeline-entry-lead > i { color: #fffdf8; background: #ef5a31; transform: rotate(45deg); }
 .timeline-entry-details,
 .paper-abstract { --reveal-left: 23px; max-height: 0; padding: 0 23px 0 var(--reveal-left); display: block; overflow: hidden; border-top: 1px dashed transparent; opacity: 0; transform: translateY(-7px); transition: max-height .45s cubic-bezier(.2,.75,.2,1), padding .45s cubic-bezier(.2,.75,.2,1), border-color .22s ease, opacity .25s ease, transform .38s ease; }
-.timeline-entry-details { --reveal-left: 114px; }
+.timeline-entry-details { --reveal-left: 57px; }
 .timeline-entry:hover .timeline-entry-details,
 .timeline-entry[open] .timeline-entry-details,
 .timeline-entry:focus-within .timeline-entry-details,
@@ -148,8 +148,9 @@ button { color: inherit; font: inherit; }
 .timeline-entry-points { margin: 11px 0 14px; display: grid; gap: 5px; color: #514a43; font: 14px/1.55 Georgia, serif; }
 .timeline-entry-points > span { position: relative; padding-left: 16px; }
 .timeline-entry-points > span::before { content: '•'; position: absolute; left: 0; color: #ef5a31; }
-.timeline-entry-details a { min-height: 44px; max-width: 100%; display: inline-flex; gap: 12px; align-items: center; justify-content: space-between; padding: 11px 14px; border: 1px solid #8a8177; background: #f7f2e8; font: 12px/1.5 var(--font-geist-mono); text-transform: uppercase; letter-spacing: .06em; transition: background .2s ease, color .2s ease; }
-.timeline-entry-details a:hover { background: #29241f; color: #fffdf8; }
+.timeline-entry-details a { min-height: 44px; max-width: 100%; display: inline-flex; gap: 7px; align-items: center; padding: 10px 0; font: 14px/1.5 var(--font-geist-mono); transition: color .2s ease; }
+.timeline-entry-details a > span { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.timeline-entry-details a:hover { color: #a73516; }
 .timeline-entry-details a:focus-visible { outline: 3px solid #ef5a31; outline-offset: 3px; }
 .timeline-entry-details a svg { flex-shrink: 0; }
 .fieldbook-notes { padding: 90px clamp(24px, 5vw, 78px) 145px; background: #e8e1d5; }
@@ -414,6 +415,7 @@ button { color: inherit; font: inherit; }
   .timeline-entry-lead > i { display: none; }
   .timeline-entry:hover .timeline-entry-shell, .timeline-entry[open] .timeline-entry-shell, .timeline-entry:focus-within .timeline-entry-shell { transform: none; }
   .timeline-entry-details, .paper-abstract { --reveal-left: 16px; padding: 0 16px 0 var(--reveal-left); }
+  .timeline-entry-details { --reveal-left: 8px; }
   .timeline-entry:hover .timeline-entry-details, .timeline-entry[open] .timeline-entry-details, .timeline-entry:focus-within .timeline-entry-details, .fieldbook-paper:hover .paper-abstract, .fieldbook-paper[open] .paper-abstract { max-height: 390px; padding: 18px 16px 20px var(--reveal-left); }
   .fieldbook-paper > summary > time, .fieldbook-paper-coming > time { padding-right: 7px; }
   .fieldbook-paper > summary > time strong { font-size: 17px; }

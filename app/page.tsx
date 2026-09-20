@@ -205,7 +205,7 @@ function FieldbookTimeline() {
                 <span className="timeline-entry-details">
                   <small>Notes from this chapter</small>
                   <span className="timeline-entry-points">{organization.details.map((detail) => <span key={detail}>{detail}</span>)}</span>
-                  <a href={organization.href} target="_blank" rel="noreferrer" aria-label={`Visit ${organization.name} website`} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>Visit institution <Arrow /></a>
+                  <a href={organization.href} target="_blank" rel="noreferrer" aria-label={`Visit ${organization.name} website`} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}><span>Website</span><Arrow /></a>
                 </span>
               </span>
             </summary>
