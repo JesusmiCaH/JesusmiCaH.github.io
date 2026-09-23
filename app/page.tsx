@@ -71,7 +71,7 @@ const organizations = [
     id: 'uw', name: 'UW–Madison', dates: 'Sep 2024 — Dec 2025', timelineFromMonth: 'Sep', timelineFromYear: '2024', timelineToMonth: 'Dec', timelineToYear: '2025', relation: 'Sep 2024 — Dec 2025 · Education', role: 'M.S. in Electrical & Computer Engineering', href: 'https://www.wisc.edu/', logo: '/images/orgs/uw-madison.png', dark: false,
     summary: 'Deepened my work in computer vision, robotics, and cooperative perception.',
     details: [
-      'Graduated with a 3.82/4.0 GPA.',
+      'Graduated with a 3.66/4.0 GPA.',
       'Studied privacy-aware cooperative SLAM using SHARP, VGGT, OPV2V, and CARLA.',
       'Contributed to work on sharing spatial sensor data without exposing raw imagery.',
     ],
